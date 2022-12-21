@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
 
 public class weatherTask {
 
-    List<weatherData> weather;
+    List<weatherDay> weatherData;
 
-    public weatherTask(){
-        this.weather = getDayTemperaturesFromFile("src/main/resources/de/bcxp/challenge/weather.csv");
+    public weatherTask(String weatherFile){
+        this.weatherData = importWeatherFromFile(weatherFile);
     }
     
-    public List<weatherData> getDayTemperaturesFromFile(String fileName){
+    public List<weatherDay> importWeatherFromFile(String fileName){
         //initialize empty list, then reads file and inserts the data for the task
-        List<weatherData> daysWithTemperatures = new ArrayList<>();
+        List<weatherDay> daysWithTemperatures = new ArrayList<>();
         List<String[]> fileContent = csvReader.csvToStringArray(fileName);
         for (String[] stringLine : fileContent){
             List<String> line = Arrays.stream(Arrays.toString(stringLine).split(",")).collect(Collectors.toList());
@@ -26,20 +26,24 @@ public class weatherTask {
         return daysWithTemperatures;
     }
 
-    private weatherData dataStringToInt(String day, String maxTemp, String minTemp) {
+    public List<weatherDay> getWeatherDays(){
+        return this.weatherData;
+    }
+
+    private weatherDay dataStringToInt(String day, String maxTemp, String minTemp) {
         //converts the required data from type String to Int and removes unnecessary whitespaces and other regular expressions 
         String parsedDay = day.replaceAll("\\[", "").replaceAll("\\s+", "");
         int parsedMaxTemp = Integer.parseInt(maxTemp.replaceAll("\\s+", ""));
         int parsedMinTemp = Integer.parseInt(minTemp.replaceAll("\\s+", "").replaceAll("]", ""));
-        return new weatherData(parsedDay, parsedMaxTemp, parsedMinTemp);
+        return new weatherDay(parsedDay, parsedMaxTemp, parsedMinTemp);
     }
 
-    public String minTempSpread(){//List<weatherData> daysWithTemperatures){
+    public String minTempSpread(){
         //compares temperature spreads of each day and returns the day with the smallest difference
-        weatherData res = this.weather.get(0);//daysWithTemperatures.get(0);
-        for (int i = 1; i < this.weather.size(); i++){
-            if (res.tempSpread() > this.weather.get(i).tempSpread()){
-                res = this.weather.get(i);
+        weatherDay res = this.weatherData.get(0);//daysWithTemperatures.get(0);
+        for (int i = 1; i < this.weatherData.size(); i++){
+            if (res.tempSpread() > this.weatherData.get(i).tempSpread()){
+                res = this.weatherData.get(i);
             }
         }
         return res.getDay();

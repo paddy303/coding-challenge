@@ -17,6 +17,9 @@ public class csvReader {
         catch (IOException | CsvException e){
             throw new RuntimeException(e);
         }
+        if (fileContents.isEmpty()){
+            System.out.println("WARNING: Loaded file is empty.");
+        }
         return fileContents;
     } 
 

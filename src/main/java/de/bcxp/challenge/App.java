@@ -17,9 +17,13 @@ public final class App {
     public static void main(String... args) {
 
         // Your preparation code …
-        weatherTask weatherApp = new weatherTask();
-        countryTask countryApp = new countryTask();
-        //String countriesFile = "src/main/resources/de/bcxp/challenge/countries.csv";
+
+        String weatherFile = "src/main/resources/de/bcxp/challenge/weather.csv";
+        weatherTask weatherApp = new weatherTask(weatherFile);
+
+        String countriesFile = "src/main/resources/de/bcxp/challenge/countries.csv";
+        countryTask countryApp = new countryTask(countriesFile);
+        
 
         String dayWithSmallestTempSpread = weatherApp.minTempSpread(); // Your day analysis function call … 
         System.out.printf("Day with smallest temperature spread: %s%n", dayWithSmallestTempSpread);
