@@ -1,0 +1,29 @@
+Vorbereitung:
+
+1 Genaues Durchlesen der Angaben inkl. der vorgegebenen Dateien
+2 Suche nach Gemeinsamkeiten der Aufgaben (z.B. ähnlicher Aufbau der csv-Dateien)
+3 Überlegen der (vermutlich) nötigen Klassen bzw. Dateien
+
+
+Vorgehen:
+
+1 Implementierung der Gemeinsamkeiten (csvReader)
+2 Implementierung einer Klasse weatherDay, die die für die Aufgabe relevanten Daten eines Tages zusammenfasst, und eventuell nötiger Funktionen (z.B. Ausgabe des Tages)
+3 Gleicher Ansatz wie bei Schritt 2 zum Aufbau einer Klasse country
+4 Implementierung einer Klasse weatherTask, die alle auf die gesamten Wetterdaten bezogenen Aufgaben lösen soll
+5 Erstellung einer Liste mit Elementen der Klasse weatherDay, dazu zuerst Anwenung von csvReader und Zerlegung von dessen Listenelementen nach Trennzeichnen (',') und konvertierung dieser zerlegten String-Elemente in das in weatherDay vorgegebene Format (sowie Entfernung der irrelevanten Zeichen (durch csvreader erstellte Klammern, Leerzeichen)
+6 Gleicher Ansatz wie bei Schritten 4+5  zum Aufbau einer Klasse countrytask
+7 Implementierung der individuellen Funktionen (Vergleich der Temperaturschwankungen und der Bevölkerungsdichte)
+8 Einbau der Funktionen in die App
+9 Erstellung von Tests, die die korrekte Berechnung der Daten und korrektes Einlesen der Dateien prüfen
+10 Einbau von eventuell auftretenden (und schwer ohne deren Einbau zu erkennenden) Fehlermeldungen
+11 Überarbeitung von Klassennamen und Kommentaren
+
+
+Überlegungen:
+
+1 Allgemeingültige Klassen für Listenelemente und Listen statt "Kategorisierung" in weather und country; nicht umgesetzt, da es mit noch kommenden anderen Datensätzen und Funktionen zu unübersichtlich wird
+2 Ersetzen von opencsv durch bufferedReader oder scanner; nicht umgesetzt aufgrund des Hinweises in der Aufgabenstellung ("The Reader for the CSV-files in your example could be replaced with a reader that implements the same interface but reads JSON-files." -> für diese Aufgabe ist zunächst rein das Einlesen von csv-Dateien erforderlich) 
+2.1 Voraussetzung für eine andere Methode: Ausgabe der eingelesenen Daten als String-Liste von Zeilen der Datei
+3 Liste nur mit den Attributen als Elementen (z.B. [name1, maxTemp1, minTemp1, name 2,...] und Erkennung der Attribute durch Listenindex mod (Anzahl der Attribute))statt Listen von Typ weatherDay bzw country; nicht umgesetzt wegen der besseren Übersicht
+4 Erkennung der Attribute durch die erste Zeile der csv-Dateien statt manueller Zuweisung des Index; nicht umgesetzt wegen des Aufwands (die gesuchten Namen der Attribute müssten trotzdem in der csv-Datei nachgelesen werden, also kann genauso gut manuell die gefragte Spalte herausgefiltert werden)
