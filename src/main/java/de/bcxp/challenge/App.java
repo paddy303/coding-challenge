@@ -19,16 +19,16 @@ public final class App {
         // Your preparation code …
 
         String weatherFile = "src/main/resources/de/bcxp/challenge/weather.csv";
-        weatherTask weatherApp = new weatherTask(weatherFile);
+        weatherTask weatherReport = new weatherTask(weatherFile);
 
         String countriesFile = "src/main/resources/de/bcxp/challenge/countries.csv";
-        countryTask countryApp = new countryTask(countriesFile);
+        countryTask countryData = new countryTask(countriesFile);
         
 
-        String dayWithSmallestTempSpread = weatherApp.minTempSpread(); // Your day analysis function call … 
+        String dayWithSmallestTempSpread = weatherReport.minTempSpread(); // Your day analysis function call … 
         System.out.printf("Day with smallest temperature spread: %s%n", dayWithSmallestTempSpread);
 
-        String countryWithHighestPopulationDensity = countryApp.maxPopulationDensity(); // Your population density analysis function call …
+        String countryWithHighestPopulationDensity = countryData.maxPopulationDensity(); // Your population density analysis function call …
         System.out.printf("Country with highest population density: %s%n", countryWithHighestPopulationDensity);
     }
 }

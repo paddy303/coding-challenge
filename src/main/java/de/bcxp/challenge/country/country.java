@@ -1,10 +1,11 @@
 package de.bcxp.challenge.country;
 
+// Used by countryTask to represent the required data of a single country
+
 public class country {
     private String name;
     private float population;
     private float area;
-    //either change population or area to double (in order to make the division less complicated); probably rather area since it's a smaller number
 
     public country(String name, float population, float area){
         this.name = name;
